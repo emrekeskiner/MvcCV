@@ -1,0 +1,72 @@
+﻿@using MvcCv.Models.Entity
+@model List<TblEgitimlerim> 
+@{
+    ViewBag.Title = "EgitimListesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Eğitim Listesi</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <a href="/Egitim/EgitimEkle/" class="btn btn-info">
+                                <i class="fas fa-plus"></i>
+                                Eğitim Ekle
+                            </a>
+                            <br />
+                            <br />
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Üniversite</th>
+                                        <th>Fakülte</th>
+                                        <th>Bölüm</th>
+                                        <th>GNO</th>
+                                        <th>Tarih</th>
+                                        <th>İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                       
+                                    <tr>
+                                        <td>@item.ID.</td>
+                                        <td>@item.Baslik</td>
+                                        <td>@item.AltBaslik1</td>
+                                        <td>@item.AltBaslik2</td>
+                                        <td>@item.GNO</td>
+                                        <td>@item.Tarih</td>
+                                        <td>
+                                         <a href="/Egitim/EgitimDuzenle/@item.ID" class="btn btn-info">
+                                            <i class="fas fa-pencil-alt"></i>
+                                            Düzenle
+                                        </a>
+                                        <a href="/Egitim/EgitimSil/@item.ID" class="btn btn-danger">
+                                            <i class="fas fa-trash-alt"></i>
+                                            Sil
+                                        </a>
+                                        </td>
+                                    </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

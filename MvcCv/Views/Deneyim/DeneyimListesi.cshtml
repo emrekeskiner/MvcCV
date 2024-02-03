@@ -1,0 +1,93 @@
+﻿@using MvcCv.Models.Entity
+@model List<TblDeneyimlerim>
+@{
+    ViewBag.Title = "AdmDeneyim";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Deneyimlerim</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <button class="btn btn-info" data-toggle="modal" data-target="#DeneyimEkle">
+                                <i class="fas fa-plus"></i>
+                                Deneyim Ekle
+                            </button>
+                            <br />
+                            <br />
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Başlık</th>
+                                        <th>Alt Başlık</th>
+                                        <th>Tarih</th>
+                                        <th>İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+
+                                        <tr>
+                                            <td>@x.ID</td>
+                                            <td>@x.Baslik</td>
+                                            <td>@x.AltBaslik</td>
+                                            <td>@x.Tarih</td>
+                                            <td>
+                                                <a href="/Deneyim/DeneyimGetir/@x.ID" class="btn btn-info">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                    Düzenle
+                                                </a>
+                                                <a href="/Deneyim/DeneyimSil/@x.ID" class="btn btn-danger">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                    Sil
+                                                </a>
+
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+    <div class="modal" id="DeneyimEkle">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Deneyim Ekle</h2>
+                </div>
+                <form method="post" action="/Deneyim/DeneyimEkle">
+                    <div class="modal-body">
+                        <label>Başlık</label>
+                        <input type="text" class="form-control" name="Baslik" />
+                        <br />
+                        <label>Alt Başlık</label>
+                        <input type="text" class="form-control" name="AltBaslik" />
+                        <br />
+                        <label>Tarih</label>
+                        <input type="text" class="form-control" name="Tarih" />
+                        <br />
+                        <label>Açıklama</label>
+                        <textarea type="text" class="form-control" name="Aciklama"></textarea>
+                        <br />
+                        <button class="btn btn-info">Kaydet</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

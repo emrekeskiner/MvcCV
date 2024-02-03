@@ -1,0 +1,42 @@
+﻿@using MvcCv.Models.Entity
+@model List<TblHakkimda>
+@{
+    ViewBag.Title = "Hakkimda";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Hakkımda Düzenleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("Hakkimda", "Hakkimda", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    <form method="post">
+        @foreach (var item in Model)
+        {
+            <label>Ad</label>
+            <input type="text" class="form-control" name="Ad" value="@item.Ad" />
+            <br />
+            <label>Soyad</label>
+            <input type="text" class="form-control" name="Soyad" value="@item.Soyad" />
+            <br />
+            <label>Telefon</label>
+            <input type="text" class="form-control" name="Telefon" value="@item.Telefon" />
+            <br />
+            <label>Mail</label>
+            <input type="text" class="form-control" name="Mail" value="@item.Mail" />
+            <br />
+            <label>Resim</label>
+            <input type="file" name="Resim" value="@item.Resim" />
+            <br />
+            <label>Adres</label>
+            <textarea rows="2" class="form-control" name="Adres">@item.Adres</textarea>
+            <br />
+            <label>Açıklama</label>
+            <textarea rows="5" class="form-control" name="Aciklama">@item.Aciklama</textarea>
+        }
+        <br />
+        <button class="btn btn-info">Güncelle</button>
+
+    </form>
+}

@@ -1,0 +1,81 @@
+﻿@using MvcCv.Models.Entity
+@model List<TblAdmin>
+@{
+    ViewBag.Title = "AdminList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Admin Listesi</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <button class="btn btn-info" data-toggle="modal" data-target="#AdminEkle">
+                                <i class="fas fa-plus"></i>
+                                Admin Ekle
+                            </button>
+                            <br />
+                            <br />
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Ad</th>
+                                        <th style="width: 20px">Durum</th>
+                                        <th style="width: 200px">İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        string durum = (item.Durum == true ? "Aktif" : "Pasif");
+                                        <tr>
+                                            <td>@item.ID.</td>
+                                            <td>@item.KullaniciAdi</td>
+                                            <td>@durum</td>
+                                            <td>
+                                                <a href="/Admin/AdminGetir/@item.ID" class="btn btn-info">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                    Düzenle
+                                                </a>
+                                                <a href="/Admin/AdminSil/@item.ID" class="btn btn-danger">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                    Sil
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class=" modal" id="AdminEkle">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Admin Ekle</h2>
+                </div>
+                <form method="post" action="/Admin/Ekle">
+                    <div class="modal-body">
+                        <label>Kullanıcı Adı</label>
+                        <input type="text" name="KullaniciAdi" class="form-control" />
+                        <br />
+                        <label>Şifre</label>
+                        <input type="text" name="Sifre" class="form-control" />
+                        <br />
+                        <button class="btn btn-info">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

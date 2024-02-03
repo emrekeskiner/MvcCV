@@ -1,0 +1,20 @@
+﻿@model MvcCv.Models.Entity.TblAdmin
+@{
+    ViewBag.Title = "AdminGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Admin Güncelle</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.HiddenFor(x => x.ID)
+    <label>Sosyal Medya Ad</label>
+    @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control" })
+    <br />
+    <label>Link</label>
+    @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-info">Güncelle</button>
+</form>

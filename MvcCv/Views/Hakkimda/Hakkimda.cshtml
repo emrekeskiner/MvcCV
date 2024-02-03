@@ -1,0 +1,60 @@
+﻿@using MvcCv.Models.Entity
+@model List<TblHakkimda>
+@{
+    ViewBag.Title = "Hakkimda";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Hakkımda Düzenleme Sayfası</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            @using (Html.BeginForm("Hakkimda", "Hakkimda", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <form method="post">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label>Ad</label>
+                                                <input type="text" class="form-control" name="Ad" value="@item.Ad" />
+                                                <br />
+                                                <label>Soyad</label>
+                                                <input type="text" class="form-control" name="Soyad" value="@item.Soyad" />
+                                                <br />
+                                                <label>Telefon</label>
+                                                <input type="text" class="form-control" name="Telefon" value="@item.Telefon" />
+                                                <br />
+                                                <label>Mail</label>
+                                                <input type="text" class="form-control" name="Mail" value="@item.Mail" />
+                                                <br />
+                                                <label>Resim</label>
+                                                <input type="file" name="Resim" value="@item.Resim" />
+                                                <br />
+                                                <label>Adres</label>
+                                                <textarea rows="2" class="form-control" name="Adres">@item.Adres</textarea>
+                                                <br />
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label>Açıklama</label>
+                                                <textarea rows="19" class="form-control" name="Aciklama">@item.Aciklama</textarea>
+                                            </div>
+                                        </div>
+                                    }
+                                    <button class="btn btn-info">Güncelle</button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>

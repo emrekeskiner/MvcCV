@@ -1,0 +1,56 @@
+﻿@model MvcCv.Models.Entity.TblEgitimlerim
+@{
+    ViewBag.Title = "EgitimDuzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Eğitim Güncelle</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form method="post">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        @Html.HiddenFor(x => x.ID)
+                                        <label>Üniversite</label>
+                                        @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.Baslik, "", new { @style = "color:red" })
+                                        <br />
+                                        <label>Fakülte</label>
+                                        @Html.TextBoxFor(x => x.AltBaslik1, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.AltBaslik1, "", new { @style = "color:red" })
+                                        <br />
+                                        <label>Bölüm</label>
+                                        @Html.TextBoxFor(x => x.AltBaslik2, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.AltBaslik2, "", new { @style = "color:red" })
+                                        <br />
+                                        <label>GNO</label>
+                                        @Html.TextBoxFor(x => x.GNO, new { @class = "form-control" })
+                                        <br />
+                                        <label>Tarih</label>
+                                        @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+                                        <br />
+
+                                        <button class="btn btn-info">Kaydet</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>

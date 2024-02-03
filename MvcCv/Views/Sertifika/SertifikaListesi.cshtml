@@ -1,0 +1,89 @@
+﻿@using MvcCv.Models.Entity
+@model List<TblSertifikalarim>
+@{
+    ViewBag.Title = "SertifikaListesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<html>
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- /.col -->
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <h4>Sertifika Listesi</h4>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#SertifikaEkle">
+                                <i class="fas fa-plus"></i>
+                                Sertifika Ekle
+                            </button>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+
+                            <div class="tab-pane" id="timeline">
+                                <!-- The timeline -->
+                                <div class="timeline timeline-inverse">
+                                    <!-- timeline time label -->
+                                    @foreach (var item in Model)
+                                    {
+
+                                        <div class="time-label">
+                                            <span class="bg-secondary">
+                                                @item.Tarih
+                                            </span>
+                                        </div>
+
+                                        <div>
+                                            <i class="fas fa-comment bg-info"></i>
+                                            <div class="timeline-item">
+                                                <span class="time"><i class="far fa-clock"></i> </span>
+
+                                                <div class="timeline-body">
+                                                    <span>@item.Kurum -</span> @item.Aciklama
+                                                </div>
+                                                <div class="timeline-footer">
+                                                    <a href="/Sertifika/SertifikaDuzenle/@item.ID" class="btn btn-info btn-sm">Düzenle</a>
+                                                    <a href="/Sertifika/SertifikaSil/@item.ID" class="btn btn-danger btn-sm">Sil</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                </div>
+                            </div>
+                        </div><!-- /.card-body -->
+                    </div>
+                    <!-- /.nav-tabs-custom -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <div class=" modal" id="SertifikaEkle">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Sertifika Ekle</h2>
+                </div>
+                <form method="post" action="/Sertifika/SertifikaEkle">
+                    <div class="modal-body">
+                        <label>Sertifika Alınan Kurum</label>
+                        <input type="text" name="Kurum" class="form-control" />
+                        <br />
+                        <label>Sertifika Konu</label>
+                        <input type="text" name="Aciklama" class="form-control" />
+                        <br />
+                        <label>Tarih</label>
+                        <input type="text" name="Tarih" class="form-control" />
+                        <br />
+                        <button class="btn btn-info">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

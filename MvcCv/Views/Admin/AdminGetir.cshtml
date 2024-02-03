@@ -1,0 +1,44 @@
+﻿@model MvcCv.Models.Entity.TblAdmin
+@{
+    ViewBag.Title = "AdminGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Admin Güncelle</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form method="post">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        @Html.HiddenFor(x => x.ID)
+                                        <label>Kullanıcı Adı</label>
+                                        @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control" })
+                                        <br />
+                                        <label>Şifre</label>
+                                        @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+                                        <br />
+
+                                        <button class="btn btn-info">Kaydet</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
